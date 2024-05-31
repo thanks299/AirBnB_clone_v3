@@ -33,7 +33,7 @@ def create_state():
 
     # Validate request body for missing "name" key and invalid JSON
     if not data:
-        return jsonify({"error": "Not a JSON"}), 400
+        return jsonify({"error": "Invalid request body"}), 400
     if "name" not in data:
         return jsonify({"error": "Missing name"}), 400
 
@@ -61,7 +61,7 @@ def update_state(state_id):
 
     # Validate request body for invalid JSON
     if not data:
-        return jsonify({"error": "Not a JSON"}), 400
+        return jsonify({"error": "Invalid request body"}), 400
 
     # Update state attributes (ignoring id, created_at, and updated_at)
     for key, value in data.items():
