@@ -5,10 +5,8 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
-from os import environ, path
+from os import environ
 from flask import Flask, render_template
-import uuid
-
 app = Flask(__name__)
 # app.jinja_env.trim_blocks = True
 # app.jinja_env.lstrip_blocks = True
@@ -35,12 +33,6 @@ def hbnb():
 
     places = storage.all(Place).values()
     places = sorted(places, key=lambda k: k.name)
-    
-    cache_id = uuid.uuid4()
-    
-    template_path = '0-hbnb.html'
-    if not path.exists(path.join(app.template_folder, template_path)):
-        template_path = '8-hbnb.html'
     
     return render_template('100-hbnb.html',
                            states=st_ct,
